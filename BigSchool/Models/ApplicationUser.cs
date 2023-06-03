@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -18,6 +21,15 @@ namespace BigSchool.Models
         public string Name
         {
             get; set;
+        }
+
+        public ICollection<Following> Followers { get; set; }
+        public ICollection<Following> Followees { get; set; }
+
+        public ApplicationUser()
+        {
+            Followers = new Collection<Following>();
+            Followees = new Collection<Following>();
         }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

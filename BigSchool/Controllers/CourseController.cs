@@ -9,8 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace BigSchool.Controllers
-{
-   
+{   
     public class CourseController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -18,7 +17,7 @@ namespace BigSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-        // GET: Course
+        // GET: Courses
         public ActionResult Create()
         {
             var viewModel = new CourseViewModel { 
@@ -39,15 +38,16 @@ namespace BigSchool.Controllers
             var course = new Course
             {
                 LecturerId = User.Identity.GetUserId(),
-                dateTime = viewModel.GetDateTime(),
-                Id = viewModel.Category,
+                DateTime = viewModel.GetDateTime(),
+                CategoryId = viewModel.Category,
                 Place = viewModel.Place
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-    }
 
-    
+       
+        
+    }    
 }
