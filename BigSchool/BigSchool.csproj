@@ -191,17 +191,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306021335068_create database.cs" />
-    <Compile Include="Migrations\202306021335068_create database.designer.cs">
-      <DependentUpon>202306021335068_create database.cs</DependentUpon>
+    <Compile Include="Migrations\202306031059030_tao csdl.cs" />
+    <Compile Include="Migrations\202306031059030_tao csdl.designer.cs">
+      <DependentUpon>202306031059030_tao csdl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306021336287_PopulateCategoryTable.cs" />
-    <Compile Include="Migrations\202306021336287_PopulateCategoryTable.designer.cs">
-      <DependentUpon>202306021336287_PopulateCategoryTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202306030722591_tao cot cancel cho Course.cs" />
-    <Compile Include="Migrations\202306030722591_tao cot cancel cho Course.designer.cs">
-      <DependentUpon>202306030722591_tao cot cancel cho Course.cs</DependentUpon>
+    <Compile Include="Migrations\202306031101040_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\202306031101040_PopulateCategoryTable.designer.cs">
+      <DependentUpon>202306031101040_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -327,14 +323,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202306021335068_create database.resx">
-      <DependentUpon>202306021335068_create database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202306031059030_tao csdl.resx">
+      <DependentUpon>202306031059030_tao csdl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202306021336287_PopulateCategoryTable.resx">
-      <DependentUpon>202306021336287_PopulateCategoryTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202306030722591_tao cot cancel cho Course.resx">
-      <DependentUpon>202306030722591_tao cot cancel cho Course.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202306031101040_PopulateCategoryTable.resx">
+      <DependentUpon>202306031101040_PopulateCategoryTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

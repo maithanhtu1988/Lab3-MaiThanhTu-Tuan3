@@ -18,13 +18,16 @@ namespace BigSchool.Controllers.api
             _dbContext = new ApplicationDbContext();
         }
 
-        [HttpDelete]
-        public IHttpActionResult Cancel(int id) {
-        
-            var userId = User.Identity.GetUserId();
-            var course = _dbContext.Courses.Single(c=>c.Id == id && c.LecturerId==userId);
 
-            if (course.IsCanceled) {
+        [HttpDelete]
+        public IHttpActionResult Cancel(int id)
+        {
+
+            var userId = User.Identity.GetUserId();
+            var course = _dbContext.Courses.Single(c => c.Id == id && c.LecturerId == userId);
+
+            if (course.IsCanceled)
+            {
                 return NotFound();
             }
             course.IsCanceled = true;
@@ -32,6 +35,7 @@ namespace BigSchool.Controllers.api
 
             return Ok();
         }
+
 
 
     }

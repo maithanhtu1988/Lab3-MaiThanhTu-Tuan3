@@ -5,9 +5,7 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
+
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -20,15 +18,43 @@ textarea {
 }
 .bg-dark {
     border-color: #00ffff;
-    background-color: #0094ff;
+    background-color: #00ff21;
 }
 
-.course > li .action {
-    display:none;
-    left:70px;
-    position: absolute;
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: #4cff00;
 }
 
-.course > li:hover .action{
-    display:block;
+.course {
+    list-style: none;
 }
+
+    .course > li {
+        position:relative;
+        margin-bottom:30px;
+    }
+        .course > li .date {
+            text-align: center;
+            background-color: #4cff00;
+            color: white;
+            width: 60px;
+            border-radius:8px;
+        }
+
+        .course > li .detail {
+            position: absolute;
+            top: 0;
+            left: 70px;
+        }
+        
+        
+        .course > li .action {
+            display: none;
+            left: 70px;
+            position: absolute;
+        }
+
+        .course > li:hover .action{
+             display:block;
+        }

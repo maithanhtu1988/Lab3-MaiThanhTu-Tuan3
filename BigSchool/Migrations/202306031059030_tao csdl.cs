@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class createdatabase : DbMigration
+    public partial class taocsdl : DbMigration
     {
         public override void Up()
         {
@@ -97,6 +97,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        IsCanceled = c.Boolean(nullable: false),
                         LecturerId = c.String(nullable: false, maxLength: 128),
                         Place = c.String(nullable: false, maxLength: 255),
                         DateTime = c.DateTime(nullable: false),

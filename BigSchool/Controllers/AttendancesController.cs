@@ -15,9 +15,9 @@ namespace BigSchool.Controllers
     public class AttendancesController : ApiController
     {
         private ApplicationDbContext _dbContext;
-        public AttendancesController(ApplicationDbContext dbContext)
+        public AttendancesController()
         {
-            _dbContext = dbContext;
+            _dbContext = new ApplicationDbContext();
         }
         [HttpPost]
         public IHttpActionResult Attend(AttendanceDto attendanceDto)

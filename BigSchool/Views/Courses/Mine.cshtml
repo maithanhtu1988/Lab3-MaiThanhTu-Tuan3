@@ -7,37 +7,67 @@
 <h2>Mine</h2>
 
 <ul class="course">
-    @foreach(var course in Model)
-            {
-                <li>
-                    <div class="date">
-                        <div class="month">
-                            @course.DateTime.ToString("MM")
-                        </div>
+    @foreach (var course in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @course.DateTime.ToString("MM")
+                </div>
 
-                        <div class="day">
-                            @course.DateTime.ToString("dd")
-                        </div>
-                    </div>
+                <div class="day">
+                    @course.DateTime.ToString("dd")
+                </div>
+            </div>
 
-                    <div class="details">
-                        <span class="lecturer">
-                            @course.Lecturer.Name
-                        </span>
+            <div class="details">
+                <span class="lecturer">
+                    @course.Lecturer.Name
+                </span>
 
-                        <span class="category">
-                            @course.Category.Name
-                        </span>
-                    </div>
+                <span class="category">
+                    @course.Category.Name
+                </span>
+            </div>
 
-                    <div class="action">
-                        <a href="@Url.Action("Edit", "Courses", new {id = course.Id})">Edit</a>
-                        <a href="#" class="js-cancel-course" data-course-id="@course.Id">Cancel</a>
-                    </div>
+            <div class="action">
+                <a href="@Url.Action("Edit", "Courses", new {id = course.Id})">Edit</a>
+                <a href="#" class="js-cancel-course" data-course-id="@course.Id">Cancel</a>
+            </div>
 
-                </li>
-                
-            }
+        </li>
+
+    }
 
 
 </ul>
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            $(".js-cancel-course").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Bạn chắc chắn muốn xóa ?",
+                    function () {
+                        $.ajax(
+                            {
+                                url: "/api/courses/" + link.attr("data-course-id"),
+                                method: "DELETE"
+                            })
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+
+                                });
+                            })
+                            .fail(function () {
+                                alert("Sai ở đâu đó !");
+                            });
+
+                    });
+            });
+        });
+    </script>      
+}

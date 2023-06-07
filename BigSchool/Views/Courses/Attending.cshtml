@@ -5,7 +5,7 @@
 }
 
 <h2>Attending</h2>
-<ul>
+<ul class="course">
     @foreach (var course in Model.UpcomingCourses)
     {
         <li>
@@ -24,46 +24,46 @@
                 </span>
 
 
-
-                <span class="category"> @course.Category.Name</span>
+                <span class="category">
+                    @course.Category.Name
+                </span>
                 @if (Model.ShowAction)
                 {
-                    <button data-couse-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance"> Going</button>
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance"> Going</button>
                 }
-            </div>
 
+            </div>
         </li>
     }
+
 </ul>
 @section scripts
         {
     <script>
-        $(document).ready(function () {
-            $(".js-toggle-attendance").click(function (e) {
-                var button = $(e.target);
-                $.post("/api/attendances", { couseId: button.attr("data-couse-id") })
-                    .done(function () {
-                        button
-                            .removeClass("btn-default").addClass("btn-info").text("Going");
+                $(document).ready(function () {
+                    $(".js-toggle-attendance").click(function (e) {
+                        var button = $(e.target);
+                        $.post("/api/Attendances", { courseId: button.attr("data-course-id") })
+                            .done(function () {
+                                button
+                                    .removeClass("btn-default").addClass("btn-info").text("Going");
 
-                    })
-                    .fail(function () {
-                        alert("Sai ở đâu đó");
+                            })
+                            .fail(function () {
+                                alert("Sai ở đâu đó");
+                            });
                     });
-            });
-        });
-
-        $("./js-toggle-follow").click(function (e) {
-            var button = $(e.target);
-            $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                .done(function () {
-                    button.text("Following");
-
-                })
-                .fail(function () {
-                    alert("Sai ở đâu đó");
                 });
-        });
 
+                $("./js-toggle-follow").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/Followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button.text("Following");
+                        })
+                        .fail(function () {
+                            alert("Sai ở đâu đó");
+                        });
+                });
     </script>
 }

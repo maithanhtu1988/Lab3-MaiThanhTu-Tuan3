@@ -7,13 +7,13 @@ namespace BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class createdatabase : IMigrationMetadata
+    public sealed partial class taocsdl : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(createdatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(taocsdl));
         
         string IMigrationMetadata.Id
         {
-            get { return "202306021335068_create database"; }
+            get { return "202306031059030_tao csdl"; }
         }
         
         string IMigrationMetadata.Source
