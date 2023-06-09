@@ -181,7 +181,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\api\CoursesController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
-    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -198,6 +197,10 @@
     <Compile Include="Migrations\202306031101040_PopulateCategoryTable.cs" />
     <Compile Include="Migrations\202306031101040_PopulateCategoryTable.designer.cs">
       <DependentUpon>202306031101040_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306082340250_sua loi csdl.cs" />
+    <Compile Include="Migrations\202306082340250_sua loi csdl.designer.cs">
+      <DependentUpon>202306082340250_sua loi csdl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -286,10 +289,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Courses\Attending.cshtml" />
     <Content Include="Views\Courses\Mine.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Following.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306031101040_PopulateCategoryTable.resx">
       <DependentUpon>202306031101040_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306082340250_sua loi csdl.resx">
+      <DependentUpon>202306082340250_sua loi csdl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

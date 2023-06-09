@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -20,9 +20,11 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Add Course", "Create", "Course", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Edit Course", "Mine", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Attend Course", "Attending", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Add Course", "Create", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Attend", "Attending", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Follow", "Following", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Mine", "Mine", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+
 
                 </ul>
                  @Html.Partial("_LoginPartial")
@@ -40,5 +42,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

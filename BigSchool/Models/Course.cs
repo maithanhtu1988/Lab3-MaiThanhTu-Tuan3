@@ -18,9 +18,15 @@ namespace BigSchool.Models
         [Required]
         [StringLength(255)]
         public string Place { get; set; }
+
+        [Display(Name = "Thời gian")]
         public DateTime DateTime { get; set; }
         public Category Category { get; set; }
         [Required]
         public byte CategoryId {get; set;}
+        public string UserName { get; set; }
+
+        public bool isShowGoing { get; set; }
+        public bool isShowFollow { get; set; }
     }
 }

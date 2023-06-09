@@ -3,8 +3,8 @@
     ViewBag.Title = "Home Page";
 }
 <div class="row">
-   
-       <ul class="course">
+
+    <ul class="course">
         @foreach (var course in Model.UpcomingCourses)
         {
             <li>
@@ -21,7 +21,7 @@
                             <button class="btn btn-default btn-sm js-toggle-follow" data-user-id=" @course.LecturerId"> Follow</button>
                         }
                     </span>
-                    
+
 
                     <span class="category">
                         @course.Category.Name
@@ -31,41 +31,81 @@
                         <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance"> Going</button>
                     }
 
-                </div>    
+                </div>
             </li>
         }
 
     </ul>
     @section scripts
-        {
-            <script>
-                $(document).ready(function () {
-                    $(".js-toggle-attendance").click(function (e) {
-                        var button = $(e.target);
+{
+        <script>
+            $(document).ready(function () {
+                $(".js-togegle-attendance").click(function (e) {
+                    var button = $(e.target);
+                    if (button.hasClass("btn-default")) {
                         $.post("/api/Attendances", { courseId: button.attr("data-course-id") })
                             .done(function () {
                                 button
-                                    .removeClass("btn-default").addClass("btn-info").text("Going");
-
+                                    .removeClass("btn-default")
+                                    .addClass("btn-info")
+                                    .text("Going");
                             })
                             .fail(function () {
-                                alert("Sai ở đâu đó");
+                                alert("Something failed!");
                             });
-                    });
+                    } else {
+                        $.ajax({
+                            url: "/api/Attendances/" + button.attr("data-course-id"),
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                button
+                                    .removeClass("btn-info")
+                                    .addClass("btn-default")
+                                    .text("Going?");
+                            })
+                            .fail(function () {
+                                alert("Something failed 2!");
+                            });
+                    }
+
                 });
 
-                $("./js-toggle-follow").click(function (e) {
+
+
+                $(".js-togegle-follow").click(function (e) {
                     var button = $(e.target);
-                    $.post("/api/Followings", { followeeId: button.attr("data-user-id") })
-                        .done(function () {
-                            button.text("Following");
+                    if (button.hasClass("btn-link")) {
+                        $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                            .done(function () {
+                                button
+                                    .removeClass("btn-link")
+                                    .addClass("btn-success")
+                                    .text("Following");
+                            })
+                            .fail(function () {
+                                alert("Something failed!");
+                            });
+                    } else {
+                        $.ajax({
+                            url: "/api/followings/" + button.attr("data-user-id"),
+                            method: "DELETE"
                         })
-                        .fail(function () {
-                            alert("Sai ở đâu đó");
-                        });
-                });
-            </script>
-        }
+                            .done(function () {
+                                button
+                                    .removeClass("btn-success")
+                                    .addClass("btn-link")
+                                    .text("Follow");
+                            })
+                            .fail(function () {
+                                alert("Something failed 2!");
+                            });
+                    }
+
+                })
+            });
+        </script>
+    }
 
 </div>
     

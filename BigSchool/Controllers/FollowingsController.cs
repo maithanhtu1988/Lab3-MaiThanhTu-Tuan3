@@ -34,5 +34,22 @@ namespace BigSchool.Controllers
             _dbcontext.SaveChanges();
             return Ok();
         }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteFollowing(string id)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var following = _dbcontext.Followings.SingleOrDefault(a => a.FollowerId == userId && a.FolloweeId == id);
+            if (following == null)
+            {
+                return NotFound();
+            }
+
+            _dbcontext.Followings.Remove(following);
+            _dbcontext.SaveChanges();
+
+            return Ok(following);
+        }
     }
 }

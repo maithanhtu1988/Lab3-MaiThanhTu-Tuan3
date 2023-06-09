@@ -10,47 +10,52 @@
     {
         <li>
             <div class="date">
-                <div class="month">@course.DateTime.ToString("MM")</div>
-                <div class="day">@course.DateTime.ToString("dd")</div>
+                <div class="month">
+                    @course.DateTime.ToString("MM")
+                </div>
+                <div class="day">
+                    @course.DateTime.ToString("dd")
+                </div>
             </div>
-
-            <div class="detail">
+            <div class="details">
                 <span class="lecturer">
                     @course.Lecturer.Name
                     @if (Model.ShowAction)
                     {
-                        if (!course.isShowFollow)
+                        if (course.isShowFollow)
                         {
-                            <button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-togegle-follow">Follow?</button>
+                            <button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-togegle-follow">Follow</button>
                         }
                         else
                         {
                             <button data-user-id="@course.LecturerId" class="btn btn-success btn-sm js-togegle-follow">Following</button>
                         }
                     }
+
                 </span>
-
-
                 <span class="category">
                     @course.Category.Name
+                    @if (Model.ShowAction)
+                    {
+                        if (course.isShowGoing)
+                        {
+                            <button data-course-id="@course.Id" class="btn btn-default btn-sm js-togegle-attendance">Going?</button>
+                        }
+                        else
+                        {
+                            <button data-course-id="@course.Id" class="btn btn-info btn-sm js-togegle-attendance">Going</button>
+                        }
+
+                    }
                 </span>
-                @if (Model.ShowAction)
-                {
-                    if (!course.isShowGoing)
-                    {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-togegle-attendance">Going?</button>
-                    }
-                    else
-                    {
-                        <button data-course-id="@course.Id" class="btn btn-info btn-sm js-togegle-attendance">Going</button>
-                    }
-                }
+
 
             </div>
         </li>
-    }
 
+    }
 </ul>
+
 @section scripts
 {
     <script>
@@ -80,7 +85,7 @@
                                 .text("Going?");
                         })
                         .fail(function () {
-                            alert("Something failed 2!");
+                            alert("Đã tham gia rồi !");
                         });
                 }
 
@@ -111,7 +116,7 @@
                                 .text("Follow");
                         })
                         .fail(function () {
-                            alert("Something failed 2!");
+                            alert("Đã theo dõi rồi!");
                         });
                 }
 

@@ -16,14 +16,13 @@ select,
 textarea {
     max-width: 280px;
 }
-.bg-dark {
-    border-color: #00ffff;
-    background-color: #00ff21;
+
+navbar-inverse .navbar-nav > li > a {
+    color: white;
 }
 
-.bg-dark {
-    --bs-bg-opacity: 1;
-    background-color: #4cff00;
+.navbar-inverse .navbar-brand {
+    color: white;
 }
 
 .course {
@@ -58,3 +57,19 @@ textarea {
         .course > li:hover .action{
              display:block;
         }
+
+button[type=submit] {
+    background-color: #ff6a00;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+    button[type=submit]:hover {
+        background-color: white;
+        color: chocolate;
+        cursor: pointer;
+    }
